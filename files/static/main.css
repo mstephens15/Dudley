@@ -2,9 +2,13 @@ body {
   background: lightblue;
   color: #333333;
   margin-top: 5rem;
+  font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
   color: #444444;
 }
 
