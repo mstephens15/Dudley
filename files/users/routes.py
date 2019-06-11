@@ -1,24 +1,19 @@
-import secrets
-import os
-from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
-from files import app, db, bcrypt, mail
-from files.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
-from files.models import User
+from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
-from flask_mail import Message
+from files import db, bcrypt
+from files.models import User
+from files.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
+                                   RequestResetForm, ResetPasswordForm)
+from files.users.utils import save_picture, send_reset_email
 
-# Route 1: Home #
-@app.route('/')
-@app.route('/home')
-def home():
-	return render_template('home.html')
+users = Blueprint('users', __name__)
 
-# Route 2: Registration #
-@app.route('/register', methods=['GET', 'POST'])
+
+# Route 1: Registration #
+@users.route('/register', methods=['GET', 'POST'])
 def register():
 	if current_user.is_authenticated:
-		return redirect(url_for('home'))
+		return redirect(url_for('main.home'))
 	form = RegistrationForm()
 
     #Validates and creates user if the account was created successfully
@@ -28,14 +23,14 @@ def register():
 		db.session.add(user)
 		db.session.commit()
 		flash(f'Your account has been created!', 'success')
-		return redirect(url_for('login'))
+		return redirect(url_for('users.login'))
 	return render_template('register.html', title='Register', form=form)
 
-# Route 3: Login #
-@app.route('/login', methods=['GET', 'POST'])
+# Route 2: Login #
+@users.route('/login', methods=['GET', 'POST'])
 def login():
 	if current_user.is_authenticated:
-		return redirect(url_for('home'))
+		return redirect(url_for('main.home'))
 	form = LoginForm()
 
 	#Validates if user put in their info to sign in correctly
@@ -45,35 +40,19 @@ def login():
 		if user and bcrypt.check_password_hash(user.password, form.password.data):
 			login_user(user, remember=form.remember.data)
 			next_page = request.args.get('next')
-			return redirect(next_page) if next_page else redirect(url_for('home'))
+			return redirect(next_page) if next_page else redirect(url_for('main.home'))
 		else:
 			flash('Login unsuccessful, please check email and password.', 'danger')
 	return render_template('login.html', title='Login', form=form)
 
-# Route 4: Logout #
-@app.route('/logout')
+# Route 3: Logout #
+@users.route('/logout')
 def logout():
 	logout_user()
-	return redirect(url_for('home'))
+	return redirect(url_for('main.home'))
 
-#form_picture is the file that the user submits
-# _ is normally 'f_name', represents the file without the extension
-def save_picture(form_picture):
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(form_picture.filename)
-    picture_fn = random_hex + f_ext
-    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
-
-#Resize photo
-    output_size = (125, 125)
-    i = Image.open(form_picture)
-    i.thumbnail(output_size)
-    i.save(picture_path)
-
-    return picture_fn
-
-# Route 5: Account #
-@app.route('/account', methods=['GET', 'POST'])
+# Route 4: Account #
+@users.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
 	form = UpdateAccountForm()
@@ -87,7 +66,7 @@ def account():
 		current_user.email = form.email.data
 		db.session.commit()
 		flash('Your account has been updated!', 'success')
-		return redirect(url_for('account'))
+		return redirect(url_for('users.account'))
 #Populates the form with whatever the username and email values are
 	elif request.method == 'GET':
 		form.username.data = current_user.username
@@ -95,45 +74,34 @@ def account():
 	image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
 	return render_template('account.html', title='Account', image_file=image_file, form=form)
 
-# For route 6; creates the message, and then sends it.
-def send_reset_email(user):
-	token = user.get_reset_token()
-	msg = Message('Password Reset Request', sender='mtchllstphns@gmail.com', recipients=[user.email])
-	msg.body = f'''To reset your password, visit the following link: 
-{url_for('reset_token', token=token, _external=True)}
 
-If you did not make this request, then simply ignore this email and no changes will be made.
-'''
-	mail.send(msg)
-
-
-# Route 6: Where they enter email to get password sent  #
-@app.route('/reset_password', methods=['GET', 'POST'])
+# Route 5: Where they enter email to get password sent  #
+@users.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
 	if current_user.is_authenticated:
-		return redirect(url_for('home'))
+		return redirect(url_for('main.home'))
 	form = RequestResetForm()
 	if form.validate_on_submit():
 		user = User.query.filter_by(email=form.email.data).first()
 		send_reset_email(user)
 		flash('An email has been sent with instructions to reset your password.', 'info')
-		return redirect(url_for('login'))
+		return redirect(url_for('users.login'))
 	return render_template('reset_request.html', title='Reset Password', form=form)
 
-# Route 7: Actually to reset the password  #
-@app.route("/reset_password/<token>", methods=['GET', 'POST'])
+# Route 6: Actually to reset the password  #
+@users.route("/reset_password/<token>", methods=['GET', 'POST'])
 def reset_token(token):
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('main.home'))
     user = User.verify_reset_token(token)
     if user is None:
         flash('That is an invalid or expired token', 'warning')
-        return redirect(url_for('reset_request'))
+        return redirect(url_for('users.reset_request'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user.password = hashed_password
         db.session.commit()
         flash('Your password has been updated! You are now able to log in', 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
