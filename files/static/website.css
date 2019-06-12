@@ -1,0 +1,545 @@
+/* Wraps entire body content */
+html, body {
+	font-size: 16px;
+	height: 100%;
+	margin: 0;
+}
+
+.wrapper {
+  overflow: hidden;
+  font-family: 'Georgia';
+}
+
+/**** Different sections  ****/
+
+/*Section 1: Banner*/
+
+.banner {
+  max-width: 100%;
+  height: 475px;
+  background-image: url("../static/photos/Banner Photo ex.jpg");
+  background-position: center center;
+  background-color: #000063;
+  position: relative;
+  background-size: cover;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+#signup {
+  float: right;
+  background-color: #fee12b;
+  padding: 3px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+  border: 1px solid black;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+}
+
+#signup a, #signin a {
+  text-decoration: none;
+  color: black;
+}
+
+#signin {
+  float: right;
+  background-color: #787878;
+  padding: 3px;
+  border-radius: 5px;
+  margin-top: 5px;
+  border: 1px solid black;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+}
+
+#signin, #signup, #test:hover {
+  cursor: pointer;
+}
+
+/* ---- End Logo, Signup, Signin ---- */
+
+/* Company Name, Slogan, Free Trial */
+
+#companyname {  
+  height: 150px;
+  width: 50%;
+  margin: auto; 
+}
+
+#companyname > p {
+	text-align: center;
+    font-size: 5rem; 
+    color: white;
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+
+#slogan {
+ 	width: 50%;
+ 	margin: auto;
+}
+
+#slogan > p {
+    font-size: 2rem;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -150%);
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+  }
+
+#freetrial {
+	height: 100px;
+	width: 18%;
+	margin: auto;
+}
+
+#freetrial > p {
+	width: 100%;
+	height: 20px;
+	text-align: center;
+    font-size: 1.25rem;
+    color: black;
+    margin: 0;
+    background-color:  #fee12b;
+    padding: 15px 0px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-family: 'AleckSansMed','Helvetica',sans-serif;
+  }
+
+#freetrial:hover {
+  cursor: pointer;
+}
+
+/* Why */
+
+#why {
+	height: 75px;
+	padding-top: 10px;
+	margin: 0 auto;
+	font-size: 1.25rem;
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-family: 'Exo 2', sans-serif;
+}
+
+/**** End Why ****/
+
+/* How */
+
+.how {
+	height: 450px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 100px 300px;
+	background-color: #424242;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#howone {
+	grid-column-start: 1;
+	grid-column-end: span 2;
+	grid-row-start: 1;
+	grid-row-end: span 1;
+	font-size: 3.5rem;
+	text-align: center;
+	color: white;
+	transform: translateY(-25px);
+}
+
+.howtwo {
+	background-color: black;
+	margin: 0 auto;
+}
+
+.howthree {
+	grid-row-start: 2;
+	grid-row-end: span 1;
+	background-color: red;
+	margin: 0 auto;
+}
+
+#partone, #parttwo {
+	color: white;
+	margin: auto;
+	transform: translateY(-15px);
+	font-size: 18px;
+	font-family: 'Exo 2', sans-serif;
+}
+/**** End How ****/
+
+/* Start Pricing */
+
+.price {
+	height: 400px;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 100%;
+	background-color: black;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#priceone {
+	font-size: 3.5rem;
+	color: white;
+	margin: 0 auto;
+	transform: translateY(3em);
+}
+
+.priceform {
+	margin: 0 auto;
+	width: 350px;
+	transform: translate(-30px, 25px);
+	border-radius: 5px;
+}
+/**** End Pricing ****/
+
+/* Start Community */
+
+.community {
+	height: 250px;
+	background-color: #424242;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#comm {
+	font-size: 3.5rem;
+	text-align: center;
+	color: white;
+	margin: 0 auto;
+	padding-top: 1.6em;
+}
+
+/**** End Community ****/
+
+/* Start Contact Me */
+
+.contact {
+	display: grid;
+	width: 100%;
+	height: 300px;
+	background-color: black;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 100%; 
+	text-align: center;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+#contactme {
+	color: white;
+	font-size: 3.5rem;
+	padding-top: 2.25em;
+}
+
+#contactform {
+	display: table;
+	height: 100%;
+	width: 100%;
+	border: 3px dashed #fee12b;
+	font-family: 'AleckSansMed','Helvetica',sans-serif;
+}
+
+.contactform > p {
+	display: table-row;
+}
+
+#a {
+	display: table-cell;
+	width: 50%;
+	height: 2rem;
+	font-size: 1.25rem;
+}
+
+#b {
+	display: table-cell;
+	width: 50%;
+	height: 4.5rem;
+	font-size: 1.25rem;
+}
+#c {
+	width: 20%;
+}
+
+#c:hover{
+	cursor: pointer;
+}
+
+#a::placeholder, textarea::placeholder {
+	font-size: 1.25rem;
+	padding-left: 5px;
+	font-family: 'Exo 2', sans-serif;
+}
+
+#a, #b, #c {
+	font-family: 'Exo 2', sans-serif;
+}
+
+.subscribebutton {
+	width: 100px;
+	height: 20px;
+	border-radius: 5px;
+	background-color: #fee12b;
+	color: black;
+	font-family: 'Exo 2', sans-serif;
+	font-weight: 600;
+}
+
+
+/**** End Contact Me ****/
+
+/* Start Footer */
+
+.footer {
+	width: 100%;
+	height: 6em;
+	background-color: #424242;
+	font-family: 'Exo 2', sans-serif;
+}
+
+#foottext {
+	width: 50%;
+	height: 100%;
+	color: white;
+	float: left;
+	transform: translateY(10px);
+}
+
+#foottext > p {
+	font-size: 1.5em;
+	padding-left: 15%; 
+}
+
+/*display: block when using media to move it down */
+#footbutton {
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+
+#footbutton > p {
+	background-color: yellow;
+	width: 25%;
+	text-align: center;
+	border: 1px solid black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 20px;
+	margin-left: 30%;
+	transform: translateY(20px);
+	font-family: 'AleckSansMed','Helvetica',sans-serif;
+}
+
+#footbutton > p:hover {
+	cursor: pointer;
+}
+
+/**** End Footer ****/
+
+/* Start WIDTH Responsive Attributes */
+	
+	/*** SCREENS < 885px ***/
+@media only screen and (max-width: 885px){
+	#why {
+		height: 100px;
+	}
+}
+
+	/*** SCREENS < 700px ***/
+
+@media only screen and (max-width: 700px){
+	#freetrial {
+		width: 23%;
+	}
+	#why {
+		height: 125px;
+	}
+}
+
+	/*** SCREENS < 585px ***/
+@media only screen and (max-width: 585px){
+
+/* Changes to why */
+
+	#why {
+		font-size: 1.1em;
+	}
+
+/*Changes to contact section */
+	.contact {
+		display: block;
+	}
+	#contactme {
+		display: none;
+	}
+	#contactform {
+		width: 100%;
+		border: none;
+	}
+
+/*Changes to footer */
+	#footbutton > p {
+		width: 40%;
+	}
+
+/* Changes to banner */
+	#companyname > p {
+		font-size: 4rem;
+	}
+	#freetrial {
+		width: 40%;
+	}
+}
+
+   /*** SCREENS < 470px ***/ 
+ @media only screen and (max-width: 470px) {
+ /* Changes to footer */	
+ 	#foottext {
+ 		width: 100%;
+ 		text-align: center;
+ 		transform: translateX(-15px);
+ 	}
+ 	#footbutton {
+ 		background-color: #424242;
+ 		width: 100%;
+
+ 	}
+ 	#footbutton > p {
+ 		width: 50%;
+ 		transform: translateX(-15px);
+ 	}
+ 	#comm {
+ 		transform: translateY(-0.75em);
+ 	}
+ /* Changes to banner */
+ 	#companyname > p {
+ 		font-size: 3rem;
+ 	}
+ 	#slogan > p {
+ 		font-size: 1.5rem;
+ 	}
+}
+   /*** SCREENS < 415px ***/
+@media only screen and (max-width: 415px) {
+	#why {
+		font-size: 1em;
+		height: 160px;
+	}
+
+	#comm {
+		font-size: 2.5rem;
+		transform: translateY(15px);
+	}
+	#freetrial {
+		width: 45%;
+	}
+}
+
+	/*** SCREENS < 350px ***/
+@media only screen and (max-width: 350px) {
+	#slogan > p {
+		font-size: 1.25rem;
+		transform: translate(-50%, -350%);
+	}
+	#freetrial {
+    	transform: translateY(-25px);
+    	width: 50%;
+    	height: 20px;
+    }
+    #freetrial > p {
+    	font-size: 0.8rem;
+    	height: 10px;
+    }
+}
+
+	/*** SCREENS < 300px ***/
+@media only screen and (max-width: 300px) {
+	#why {
+		height: 210px;
+	}
+	#a, #c {
+		font-size: 15px;
+		width: 100%;
+	}
+	#b {
+		font-size: 10px;
+		width: 100%;
+		height: 6em;
+	}
+	#a::placeholder, #b::placeholder, textarea::placeholder {
+	font-size: 1rem;
+    }
+
+    #comm {
+    	transform: translateY(-8px);
+    }
+
+/* Changes to banner */
+    .logo {
+    	width: 75px;
+    	height: 75px;
+    }
+    #companyname > p {
+    	font-size: 2.25rem;
+    	transform: translateY(40px);
+    }
+    #slogan > p {
+    	font-size: 1rem;
+    	transform: translate(-50%, -400%);
+    }
+}
+
+	/*** SCREENS < 245px ***/
+@media only screen and (max-width: 245px) {
+	#why {
+		height: 250px;
+	}
+
+	.logo {
+		width: 30px;
+		height: 30px;
+	}
+	#signup, #signin {
+		width: 40px;
+		font-size: 0.7rem;
+	}
+	#companyname {
+		width: 70%;
+	}
+	#slogan > p {
+		display: none;
+	}
+}
+
+	/*** SCREENS < 205px ***/
+@media only screen and (max-width: 205px) {
+	#why {
+		height: 300px;
+	}
+	#footbutton {
+		padding-top: 20px;
+	}
+	#freetrial {
+		width: 60%;
+	}
+}
+/**** End WIDTH Responsive Attributes ****/
+
+/* Start HEIGHT Responsive Attributes */
+
+
+/**** End HEIGHT Responsive Attributes ****/
+
+/********************************************************************************/
+
+/* Sign in and Sign Up */
+

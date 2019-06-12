@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dudley</title>
+	<link href="../static/website.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:200,600|Montserrat+Alternates:500" rel="stylesheet">
+<body>
+
+<div class = "wrapper">
+
+<!-- Start Banner -->
+
+<div class="banner">
+   		<img src="../static/photos/Sun & Moon Final.png" alt="logo" class="logo" />
+   		<div id="signup"><b><a href="{{ url_for('users.signin') }}">Sign Up</b></a></div>
+   		<div id="signin"><b><a href="{{ url_for('main.home') }}">Sign In</b></a></div>
+   		<div id="companyname"><p>Dudley</p></div>
+       </br>
+      <div id="slogan"><p>Invest in your own happiness.<p></div>
+   	  </br>
+      <div id="freetrial"><p>FREE TRIAL</p></div>
+</div>
+
+<!------- End Banner ------->
+
+<!-- Start Why -->
+<p id="why">I created this service as a way to help you elevate your standard of happiness. I wanted to combine both physical and mental health to help you fully recalibrate your life. I believe the most important parts of life include always bettering yourself and finding ways to stay happy everyday.
+</p>
+<!------- End Why -------->
+
+<!-- Start How it Works -->
+
+<div class="how">
+  <p id="howone">HOW IT WORKS</p>
+  <img src="../static/photos/Sun & Moon Final.png" alt="logo" class="howtwo" />
+  <p id="partone">CONQUEST MODE</p>
+  <img src="../static/photos/Sun & Moon Final.png" alt="logo" class="howthree" />
+  <p id="parttwo">VIDEO LIBRARY</p>
+</div>
+
+<!------ End How it Works ---->
+
+<!-- Start Pricing -->
+
+<div class="price">
+	<img src="../static/photos/Price Final.png" alt="price" />
+</div>	
+
+<!----- End Pricing ------>
+
+<!-- Start Community -->
+
+<div class="community">
+	<p id="comm">COMMUNITY: COMING SOON!</p>
+</div>
+
+<!----- End Community ---->
+
+<!-- Start Contact -->
+
+<div class="contact">
+	<span id="contactme">CONTACT ME</span>
+	 <form id="contactform" action="mailto:mtchllstphns@gmail.com">
+		<p>
+			<input id="a" type="text" placeholder="Name">
+		</p>
+		<p>
+			<input id="a" type="text" placeholder="Email">
+		</p>
+		<p>
+		   <textarea id="b" name="comment" placeholder="Comments"></textarea>
+		</p>
+		<p>
+			<input class="subscribebutton" id = "c" type="submit" name="Subscribe" value="Submit">
+		</p>
+	 </form>
+</div>
+
+<!----- End Contact ------>
+
+<!-- Start Footer -->
+
+<div class="footer">
+	   <div id="foottext"><p>invest in your happiness, today.</p></div>
+	   <div id="footbutton"><p>Free Trial</p></div>
+</div>
+
+<!----- End Footer ------>
+</div>
+<!------- End Content -------->
+
+<script src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/website.js"></script>
+
+</body>
+
+</html>
+
