@@ -12,13 +12,13 @@
 
 <div class="banner">
    		<img src="../static/photos/Sun & Moon Final.png" alt="logo" class="logo" />
-   		<div id="signup"><b><a href="{{ url_for('users.signin') }}">Sign Up</b></a></div>
-   		<div id="signin"><b><a href="{{ url_for('main.home') }}">Sign In</b></a></div>
+   		<div id="signup"><b><a href="{{ url_for('users.register') }}">Sign Up</b></a></div>
+   		<div id="signin"><b><a href="{{ url_for('users.login') }}">Sign In</b></a></div>
    		<div id="companyname"><p>Dudley</p></div>
        </br>
       <div id="slogan"><p>Invest in your own happiness.<p></div>
    	  </br>
-      <div id="freetrial"><p>FREE TRIAL</p></div>
+      <div id="freetrial"><a href="{{ url_for('users.login') }}"><p>FREE TRIAL</p></a></div>
 </div>
 
 <!------- End Banner ------->
@@ -82,7 +82,7 @@
 
 <div class="footer">
 	   <div id="foottext"><p>invest in your happiness, today.</p></div>
-	   <div id="footbutton"><p>Free Trial</p></div>
+	   <div id="footbutton"><a href="{{ url_for('users.register') }}"><p>Free Trial</p></a></div>
 </div>
 
 <!----- End Footer ------>

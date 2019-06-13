@@ -1,6 +1,6 @@
 body {
-  background: lightblue;
-  color: #333333;
+  background: #cbcbcb;
+  color: white;
   margin-top: 5rem;
   font-family: 'Exo 2', sans-serif;
     font-weight: 600;
@@ -9,11 +9,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Exo 2', sans-serif;
   font-weight: 600;
-  color: #444444;
+  color: white;
 }
 
 .content-section {
-  background: #ffffff;
+  background: #424242;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -21,21 +21,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #424242;
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: yellow;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+  color: #cbcbcb;
 }
 
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
 }
 
+.dudley-tag {
+  color: yellow!important;
+}
+
+.my-button {
+  color: black;
+  border-color: black;
+  background: yellow;
+  font-family: 'Exo 2', sans-serif!important;
+  font-weight: 600!important;
+}
+
+.mini-text {
+  color: black;
+  font-weight: 800;
+}
+
+.mini-text:hover {
+  color: blue;
+}
+
+.forgot-password {
+  color: white;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  color: lightblue;
+}
 /* Account page */ 
 
 .account-img {
