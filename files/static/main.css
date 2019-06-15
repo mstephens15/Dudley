@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
 }
 
+/**    Navbar    **/
 .bg-steel {
   background-color: #424242;
 }
@@ -36,6 +37,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+/**  Buttons and links   **/
+
 .dudley-tag {
   color: yellow!important;
 }
@@ -43,9 +46,15 @@ h1, h2, h3, h4, h5, h6 {
 .my-button {
   color: black;
   border-color: black;
-  background: yellow;
+  background: #ffed7d;
   font-family: 'Exo 2', sans-serif!important;
   font-weight: 600!important;
+}
+
+.my-button:hover {
+  color: black;
+  background-color: yellow;
+  border: 1.5px solid black;
 }
 
 .mini-text {
@@ -54,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mini-text:hover {
-  color: blue;
+  color: black;
 }
 
 .forgot-password {
@@ -65,7 +74,8 @@ h1, h2, h3, h4, h5, h6 {
 .forgot-password:hover {
   color: lightblue;
 }
-/* Account page */ 
+
+/**   Account page   **/ 
 
 .account-img {
   height: 125px;
@@ -76,4 +86,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+/**   Layout   **/
+.side-tab:hover {
+  cursor: pointer;
+  background-color: lightblue;
+  border: 1.25px black solid;
 }

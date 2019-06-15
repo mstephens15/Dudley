@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- My CSS -->
-    <link href="../static/website.css" type="text/css" rel="stylesheet">
+    <link href="../static/landingpage.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Exo+2:200,600|Montserrat+Alternates:500" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
@@ -35,7 +35,6 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
-              <a class="nav-item nav-link" href="{{ url_for('main.home') }}">About</a>
             </div>
   <!-- Navbar Right Side -->
             <div class="navbar-nav">
@@ -74,8 +73,9 @@
             <h3>Our Sidebar</h3>
             <p class='text-muted'>Get connected!
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Community</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light side-tab"><a href="{{ url_for('posts.new_post') }}">Community</a></li>
+                <li class="list-group-item list-group-item-light side-tab">Weekly Challenge</li>
+                <li class="list-group-item list-group-item-light side-tab">Announcements</li>
               </ul>
             </p>
           </div>
