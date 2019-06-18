@@ -80,8 +80,8 @@ h1, h2, h3, h4, h5, h6 {
 .account-img {
   height: 125px;
   width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
+  margin-right: 30px;
+  margin-bottom: 25px;
 }
 
 .account-heading {
@@ -93,4 +93,11 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   background-color: lightblue;
   border: 1.25px black solid;
+}
+
+.article-img {
+  height: 100px;
+  width: 100px!important;
+  margin-top: 5px;
+  margin-right: 10px;
 }

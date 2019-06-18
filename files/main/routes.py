@@ -3,15 +3,16 @@ from files.models import Post
 
 main = Blueprint('main', __name__)
 
-
+#Route 1: Home Page #
 @main.route("/home")
-def home():
-    page = request.args.get('page', 1, type=int)
-#Shows first _ posts on the home page, starting with the newest due to 'post.date_posted.desc()'    
-    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template('home.html', posts=posts)
+def home():    
+    return render_template('home.html')
 
-
+#Route 2: Community Page #
+@main.route('/community')
+def community():
+	posts = Post.query.order_by(Post.date_posted.desc())
+	return render_template('community.html', posts=posts)
 
 # Route 1: Landing Page #
 @main.route('/')

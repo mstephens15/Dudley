@@ -23,7 +23,7 @@ def new_post():
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
-        return redirect(url_for('main.home'))
+        return redirect(url_for('main.community'))
     return render_template('create_post.html', title='New Post', form=form, legend='New Post')
 #Allows you to go to a specific post. <post_id> changes depending on which post you click on.
 #Since we expect post_id to be an integer, we include int
@@ -35,7 +35,7 @@ def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html', title=post.title, post=post)
 
-###Allows you to update the post after it has been posted
+###For updating a post
 @posts.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
@@ -69,4 +69,4 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!', 'success')
-    return redirect(url_for('main.home'))
+    return redirect(url_for('main.community'))

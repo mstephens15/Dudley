@@ -15,8 +15,8 @@ def save_picture(form_picture):
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(current_app.root_path, 'static/profile_pics', picture_fn)
 
-#Resize a large photo to be 125x125. Used with the PIL(pillow) import.
-    output_size = (125, 125)
+#Resize a large photo to be 100x100. Used with the PIL(pillow) import.
+    output_size = (100, 100)
     i = Image.open(form_picture)
     i.thumbnail(output_size)
     i.save(picture_path)
