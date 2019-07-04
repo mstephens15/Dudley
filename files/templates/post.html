@@ -3,20 +3,25 @@
 
 <!-- Can use 'author' because it is a reference to every attribute of the user -->
 
-  <article class="media content-section">
-       <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+  <article class="media content-section round">
+          <div class="picbut">
+            <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+            {% if post.author == current_user %}
+                  <div class="updatedelete">
+                    <a class= 'btn btn-secondary btn-sm mt-1 mb-1' href="{{ url_for('posts.update_post', post_id = post.id) }}">Update</a>
+                    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                  </div>
+                {% endif %}
+          </div>
         <div class="media-body">
+          <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
+          <small class="text-muted">{{ post.date_posted.strftime('%m-%d-%Y') }}</small>
           <h2 class="article-title">{{ post.title }}</h2>
           <p class="article-content">{{ post.content }}</p>
           <div class="article-metadata">
-              <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
-              <small class="text-muted">{{ post.date_posted.strftime('%m-%d-%Y') }}</small>
-              {% if post.author == current_user %}
-                <div>
-                  <a class= 'btn btn-secondary btn-sm mt-1 mb-1' href="{{ url_for('posts.update_post', post_id = post.id) }}">Update</a>
-                  <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                </div>
-              {% endif %}
+            <small class="encouragebutton">Encourage</small>
+            <small class="viewcomments">Reactions</small>
+            <br></br>
             </div>
         </div>
   </article>

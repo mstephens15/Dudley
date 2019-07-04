@@ -88,16 +88,102 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2.5rem;
 }
 
+.encourage {
+  background-color: white;
+  color: #cbcbcb;
+}
+
+.encourage-text {
+  color: #cbcbcb;
+}
+
+.account-title {
+  font-size: 28px;
+
+}
+
+.records {
+  background: #cbcbcb;
+  color: white;
+}
+
+.records-text{
+  color: white;
+}
+
 /**   Layout   **/
 .side-tab:hover {
   cursor: pointer;
   background-color: lightblue;
   border: 1.25px black solid;
+  text-decoration: none;
+}
+
+/**  Articles  **/
+.entire-article {
+  border-radius: 5%;
+}
+
+.article-title {
+  font-size: 28px;
+  color: white;
+}
+
+.article-content {
+  font-size: 16px;
 }
 
 .article-img {
   height: 100px;
   width: 100px!important;
-  margin-top: 5px;
-  margin-right: 10px;
+  transform: translateX(-5px);
+}
+
+.userlinktag {
+  color: #ffed7d!important;
+}
+
+.encouragebutton {
+  display: inline-block!important;
+}
+
+.encouragebutton:hover {
+  cursor: pointer;
+
+}
+
+.viewcomments {
+  display: inline-block;
+  float: right;
+}
+
+.selected {
+  color: #ffed7d;
+}
+
+.round {
+  border-radius: 30px!important;
+}
+
+.updatedelete {
+  transform: translateX(-10px);
+  padding: 5px 0;
+}
+
+.picbut {
+  display: inline-grid;
+}
+
+#deleteModalLabel {
+  color: red;
+}
+
+/* Banner for sidelinks */
+
+.sidebanner {
+  background-color: #ffed7d;
+  border-radius: 10px;
+  border: 1px solid black;
+  color: black;
+
 }

@@ -70,3 +70,9 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('main.community'))
+
+###For showing all comments on a post / allowing you to post, if logged in
+@posts.route('/post/<int:post_id>/reactions', methods=['GET', 'POST'])
+def view_reactions(post_id):
+    pass
+
