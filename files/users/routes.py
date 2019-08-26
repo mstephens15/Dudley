@@ -90,7 +90,7 @@ def account():
 
 ###For showing all of the posts for one user
 @users.route("/user/<string:username>")
-def user_posts(username,):
+def user_posts(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
     posts = Post.query.filter_by(author=user)\
