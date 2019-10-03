@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
-    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    is_admin = db.Column(db.Boolean(), unique=False, default=False)
 
 
   #For resetting password
@@ -47,14 +47,3 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
-
-#Role model
-class Role(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
-    users = db.relationship('User', backref='role', lazy=True)
-
-
-    def __repr__(self):
-        return f"Role('{self.name}')"
-        

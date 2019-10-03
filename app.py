@@ -1,5 +1,5 @@
 from files import create_app, db
-from files.models import User, Role, Post
+from files.models import User, Post
 from flask_migrate import Migrate
 import click
 
@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
 @app.shell_context_processor
 def make_shell_context():
-    return dict(db=db, User=User, Role=Role, Post=Post)
+    return dict(db=db, User=User, Post=Post)
 
 migrate = Migrate(app, db)
 

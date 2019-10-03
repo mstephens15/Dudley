@@ -15,8 +15,10 @@ class BasicsTestCase(unittest.TestCase):
         db.drop_all()
         self.app_context.pop()
 
+#Ensures that the application instance exists
     def test_app_exists(self):
         self.assertFalse(current_app is None)
 
+#Ensures that the application is running under testing configuration
     def test_app_is_testing(self):
         self.assertFalse(current_app.config['TESTING'])

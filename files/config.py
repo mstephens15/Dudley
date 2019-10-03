@@ -5,15 +5,15 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
 	SECRET_KEY = '2ea91db6b60bffa7dc5d1fc3c5d26223'
 
-	#Making an easy, local database
+	#Making an easy, local database. Where is database, what is username and password for database.
 	SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
 	
 	#Mail
 	MAIL_SERVER = 'smtp.googlemail.com'
 	MAIL_PORT = 587
 	MAIL_USE_TLS = True
-	MAIL_USERNAME = 'mtchllstphns@gmail.com'
-	MAIL_PASSWORD = 'Dudley15!!'
+	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 	FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 	SQLALCHEMY_TRACK_MODIFICATIONS = False;
