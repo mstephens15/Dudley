@@ -3,7 +3,6 @@ from files.models import User, Post
 from flask_migrate import Migrate
 import click
 
-
 app = create_app()
 
 if __name__ == '__main__':
@@ -25,3 +24,4 @@ def test(test_names):
     else:
         tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner(verbosity=2).run(tests)
+

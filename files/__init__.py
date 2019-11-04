@@ -5,12 +5,21 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from files.config import Config
 
+from flask_admin import Admin, AdminIndexView
+from flask_admin.contrib.sqla import ModelView
+
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = 'users.login'
 mail = Mail()
+
+#Working with the admin page!
+from files.models import User, Controller, MyAdmin
+
+admin = Admin(index_view=MyAdmin())
+admin.add_view(Controller(User, db.session))
 
 #change the alert if it asks people to sign in first
 login_manager.login_message_category = 'info'
@@ -25,6 +34,7 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
+    admin.init_app(app)
 
 #The last part (users, posts, main, errors etc.) is the first line, that equals the blueprint
     from files.users.routes import users

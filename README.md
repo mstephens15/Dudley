@@ -12,7 +12,12 @@ Website
 	-added some testing configurations for different parts of app
 >messed around a lot with databases, deleted all and creating new users
 
-### Version 1.13 (In progress)
+### Version 1.13 
 >Deleted roles model
 	-I only have two roles, admin and player, so I don't need a whole class. Keep it simple.
 >added is.admin to User model
+
+### Version 1.14 (In progress)
+>Added a Controller Model
+>Added admin page and features that only I can get into
+>Added Flask Security from (Intro to Flask-Security)

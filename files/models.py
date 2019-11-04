@@ -1,10 +1,14 @@
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import current_app
+from flask import current_app, redirect, url_for
 from files import db, login_manager
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
+from flask_admin.contrib.sqla import ModelView
+from flask_admin import AdminIndexView
+
 
 #For the extension strictly, so it knows how to pull out the ids
+# "How to Integrate Flask-Admin and Flask-Login"
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -47,3 +51,16 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+#Controller model -- "How to Integrate Flask-Admin and Flask-Login"
+class Controller(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('login'))
+
+class MyAdmin(AdminIndexView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+

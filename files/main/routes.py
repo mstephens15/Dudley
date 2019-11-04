@@ -1,5 +1,6 @@
 from flask import render_template, request, Blueprint
-from files.models import Post
+from files.models import Post, User
+from flask_login import login_user, logout_user
 
 main = Blueprint('main', __name__)
 
@@ -29,3 +30,15 @@ def announcements():
 @main.route("/challenge")
 def challenge():
 	return render_template('challenge.html')
+
+#Route 6: Admin Login #
+@main.route("/adminpage")
+def admin():
+	user = User.query.get(1)
+	login_user(user)
+	return "YAYYY"
+
+@main.route("/no")
+def no():
+	logout_user()
+	return "SEE YA"
