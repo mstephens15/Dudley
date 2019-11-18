@@ -1,10 +1,10 @@
 import os
 
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
 	SECRET_KEY = '2ea91db6b60bffa7dc5d1fc3c5d26223'
+	SECURITY_PASSWORD_SALT = 'thisisapassword'
 
 	#Making an easy, local database. Where is database, what is username and password for database.
 	SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'

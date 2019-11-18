@@ -1,6 +1,7 @@
 from flask import render_template, request, Blueprint
 from files.models import Post, User
 from flask_login import login_user, logout_user
+from flask_security import roles_required
 
 main = Blueprint('main', __name__)
 
@@ -37,8 +38,3 @@ def admin():
 	user = User.query.get(1)
 	login_user(user)
 	return "YAYYY"
-
-@main.route("/no")
-def no():
-	logout_user()
-	return "SEE YA"

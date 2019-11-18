@@ -17,7 +17,17 @@ Website
 	-I only have two roles, admin and player, so I don't need a whole class. Keep it simple.
 >added is.admin to User model
 
-### Version 1.14 (In progress)
+### Version 1.14 (Closed 11/4/19)
 >Added a Controller Model
 >Added admin page and features that only I can get into
->Added Flask Security from (Intro to Flask-Security)
+
+### Version 1.15 (Closed 11/18/19 -- Still running, additions that break code are commented out currently)
+>>Added Flask Security from (Intro to Flask-Security)
+>>Added security folder with login_user.html
+
+
+## --current issue -- ##
+>>how to automatically assign roles when people sign up for the website
+>>how to override login page of flask security with my own
+
+### Version 1.16 (open) ###

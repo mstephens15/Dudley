@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from files.config import Config
-
+from flask_security import Security, SQLAlchemyUserDatastore
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 
@@ -16,7 +16,8 @@ login_manager.login_view = 'users.login'
 mail = Mail()
 
 #Working with the admin page!
-from files.models import User, Controller, MyAdmin
+from files.models import User, Role, Controller, MyAdmin
+from files.users.forms import LoginForm
 
 admin = Admin(index_view=MyAdmin())
 admin.add_view(Controller(User, db.session))
@@ -35,6 +36,9 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
     admin.init_app(app)
+
+    #user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    security = Security(app) #,user_datastore, login_form=LoginForm)
 
 #The last part (users, posts, main, errors etc.) is the first line, that equals the blueprint
     from files.users.routes import users
