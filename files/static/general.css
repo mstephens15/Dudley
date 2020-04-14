@@ -1,0 +1,53 @@
+body {
+  background: #cbcbcb;
+  color: white;
+  margin-top: 5rem;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  color: white;
+}
+
+.content-section {
+  background: #424242;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.font30 {
+  font-size: 30px;
+}
+
+.font45 {
+  font-size: 45px;
+}
+
+.font60 {
+  font-size: 60px;
+}
+
+.font80 {
+  font-size: 80px;
+}
+
+.font100 {
+  font-size: 100px;
+}
+
+.textaligncenter {
+  text-align: center;
+}
+
+.uwhite {
+	border-bottom: 1px solid white;
+}
+
+.borderwhite {
+	border: 1px solid white;
+}

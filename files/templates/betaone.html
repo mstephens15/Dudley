@@ -1,0 +1,56 @@
+{% extends "layout_beta.html" %}
+{% block extra %}
+
+<div class="content-section">
+    <fieldset class="form-group text-center">
+        <legend class="font45 uwhite">Records</legend>
+
+    <!-- Row 1: Titles -->
+
+    <div class="row">
+            <div class="col-6 text-center font45">
+             	 <p>Workout </br>Streak</p>
+            </div>
+            <div class="col-6 text-center font45">
+               <p>Workouts </br>Completed</p>
+            </div>
+    </div>
+
+    <!-- Row 2: Inputs -->
+<form method="POST" action="">
+    <div class="row">
+      <p class="col-6 font100" id="streakcounter">{{ form.streak }}</p>
+      <p class="col-6 font100" id="totalcounter">{{ form.total }}</p>
+    </div>   		   
+           
+    <!-- Row 3: Buttons -->
+
+    <div class="row">
+      <span class="col-6">
+        <button id="betabuttonplus" onclick="addStreak()"><i class="fa fa-plus"></i></button>
+        <button id="betabuttonminus" onclick="subtractStreak()"><i class="fa fa-minus"></i></button>  
+      </span>
+                
+      <span class="col-6">
+        <button id="betabuttonplus" onclick="addTotal()"><i class="fa fa-plus"></i></button>
+        <button id="betabuttonminus" onclick="subtractTotal()"><i class="fa fa-minus"></i></button>
+      </span>
+   </div>
+
+   <!-- Row 4: Update Button -->
+
+        <form method="POST" action=""> 
+            <div class="form-group">
+                {{ form.submit(class="my-button btn btn-outline-info") }}
+            </div>
+        </form>
+
+        <div class="textaligncenter">
+             <div class="font45">
+                <a class="nav-link" href="{{ url_for('users.workout') }}">Get Mission</a>
+             </div>
+        </div>
+    </fieldset>
+</div>
+
+{% endblock extra %}

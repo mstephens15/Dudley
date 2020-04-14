@@ -5,6 +5,7 @@ from files import db, login_manager
 from flask_login import UserMixin, current_user
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import AdminIndexView
+from datetime import datetime
 
 #Flask Security
 from flask_security import Security, SQLAlchemyUserDatastore, RoleMixin
@@ -13,18 +14,19 @@ from flask_security import Security, SQLAlchemyUserDatastore, RoleMixin
 # "How to Integrate Flask-Admin and Flask-Login"
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.get(int(user_id)) 
+
+#Followers
+class Follow(db.Model):
+    __tablename__ = "follows"
+    follower_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    followed_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 #Association table between users and roles
 roles_users = db.Table('roles_users',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('role_id', db.Integer, db.ForeignKey('role.id')))
-
-def assign_role(self, email):
-    if user.email == "test@test.com":
-        role.id = 1
-    else:
-        role.id = 2
 
 #User model
 class User(db.Model, UserMixin):
@@ -33,6 +35,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), nullable=True, unique=True)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    #streak = db.Column(db.Integer, nullable=False)
+    #total = db.Column(db.Integer, nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     roles = db.relationship(
         'Role',
@@ -40,7 +44,43 @@ class User(db.Model, UserMixin):
         backref=db.backref('users', lazy='dynamic')
     )
 
-  #For resetting password
+#One to many left side of many-many for followers and followed
+    followed = db.relationship('Follow',
+                               foreign_keys=[Follow.follower_id],
+                               backref=db.backref('follower', lazy='joined'),
+                               lazy='dynamic',
+                               cascade='all, delete-orphan')
+
+#One to many right side of many-many for followers and followed
+    followers = db.relationship('Follow',
+                                foreign_keys=[Follow.followed_id],
+                                backref=db.backref('followed', lazy='joined'),
+                                lazy='dynamic',
+                                cascade='all, delete-orphan')
+
+#Followers helper methods
+
+    def follow(self, user):
+        if not self.is_following(user):
+            f = Follow(follower=self, followed=user)
+            db.session.add(f)
+
+    def unfollow(self, user):
+        f = self.followed.filter_by(followed_id=user.id).first()
+        if f:
+            db.session.delete(f)
+
+    def is_following(self, user):
+        if user.id is None:
+            return False
+        return self.followed.filter_by(followed_id=user.id).first() is not None
+
+    def is_followed_by(self, user):
+        if user.id is None:
+            return False
+        return self.followers.filter_by(follower_id=user.id).first() is not None
+
+#For resetting password
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
         return s.dumps({'user_id': self.id}).decode('utf-8')

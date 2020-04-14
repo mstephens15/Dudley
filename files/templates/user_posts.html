@@ -24,8 +24,17 @@
         </article>
         
     {% endfor %}
-    
 
+{% if user != current_user %}
+        {% if not current_user.is_following(user) %}
+        <a href="{{ url_for('.follow', username=user.username) }}"
+            class="btn btn-default">Follow</a>
+        {% else %}
+        <a href="{{ url_for('.unfollow', username=user.username) }}"
+            class="btn btn-default">Unfollow</a>
+        {% endif %}
+{% endif %}
+    
 <!-- Setting up the page links at the bottom of the page for posts -->
 <!-- If it is the page you are on, make the button look a little different -->
 
@@ -41,3 +50,4 @@
       {% endif %}
     {% endfor %}
 {% endblock content %}
+

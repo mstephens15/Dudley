@@ -22,12 +22,48 @@ Website
 >Added admin page and features that only I can get into
 
 ### Version 1.15 (Closed 11/18/19 -- Still running, additions that break code are commented out currently)
->>Added Flask Security from (Intro to Flask-Security)
->>Added security folder with login_user.html
+>Added Flask Security from (Intro to Flask-Security)
+>Added security folder with login_user.html
 
 
-## --current issue -- ##
+### Version 1.16 (Closed 2/3/20) ###
+>Added follows class
+>Added followed/follwers to User class
+
+
+## --Pending issues -- ##
 >>how to automatically assign roles when people sign up for the website
 >>how to override login page of flask security with my own
+>>follow is now on the page, however when I click it it gives me an error still, check it out...
 
-### Version 1.16 (open) ###
+    models.py
+    routes.py
+    user_posts.html
+
+### Version 1.17 (Open 2/3/20)
+>Recreating "home" to be more simple like my Beta 1.0 workflow drawings
+>Editing mainly workout.html and betaone.html
+>Added new CSS page, general.css 
+>Cleaned up CSS; made classes like real classes i.e. can be used many times, id for specific
+
+
+<!--- {% if user != current_user %}
+        {% if not current_user.is_following(user) %}
+        <a href="{{ url_for('.follow', username=user.username) }}"
+            class="btn btn-default">Follow</a>
+        {% else %}
+        <a href="{{ url_for('.unfollow', username=user.username) }}"
+            class="btn btn-default">Unfollow</a>
+        {% endif %}
+    {% endif %}
+    <a href="{{ url_for('.followers', username=user.username) }}">
+        Followers: <span class="badge">{{ user.followers.count() }}</span>
+    </a>
+    <a href="{{ url_for('.followed_by', username=user.username) }}">
+        Following: <span class="badge">{{ user.followed.count() }}</span>
+    </a>
+    {% if current_user.is_authenticated and user != current_user and user.is_following(current_user) %}
+        <span class="label label-default">Follows you</span>
+    {% endif %}
+
+    --->

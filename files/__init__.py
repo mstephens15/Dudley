@@ -7,6 +7,7 @@ from files.config import Config
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+from flask_migrate import Migrate
 
 
 db = SQLAlchemy()
@@ -14,6 +15,7 @@ bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = 'users.login'
 mail = Mail()
+migrate = Migrate()
 
 #Working with the admin page!
 from files.models import User, Role, Controller, MyAdmin
@@ -25,6 +27,7 @@ admin.add_view(Controller(User, db.session))
 #change the alert if it asks people to sign in first
 login_manager.login_message_category = 'info'
 
+migrate = Migrate()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -36,6 +39,7 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
     admin.init_app(app)
+    migrate.init_app(app)
 
     #user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     security = Security(app) #,user_datastore, login_form=LoginForm)

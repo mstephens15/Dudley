@@ -3,7 +3,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from files import db, bcrypt
 from files.models import User, Post
 from files.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                                   RequestResetForm, ResetPasswordForm)
+                                   RequestResetForm, ResetPasswordForm, BetaForm)
 from files.users.utils import save_picture, send_reset_email
 
 #In blueprint, users is the name of the blueprint (aka the folder its in)
@@ -131,3 +131,58 @@ def reset_token(token):
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
     
+#### This is where I stopped ####
+
+@users.route('/follow/<username>')
+@login_required
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('Invalid user.')
+        return redirect(url_for('.index'))
+    if current_user.is_following(user):
+        flash('You are already following this user.')
+        return redirect(url_for('users.user', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash('You are now following %s.' % username)
+    return redirect(url_for('users.user', username=username))
+
+
+@users.route('/unfollow/<username>')
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('Invalid user.')
+        return redirect(url_for('.index'))
+    if not current_user.is_following(user):
+        flash('You are not following this user.')
+        return redirect(url_for('users.user', username=username))
+    current_user.unfollow(user)
+    db.session.commit()
+    flash('You are not following %s anymore.' % username)
+    return redirect(url_for('users.user', username=username))
+
+#Route: Beta 1.0 #
+@users.route("/betaone", methods=['GET', 'POST'])
+@login_required
+def beta():
+    form = BetaForm()
+    if form.validate_on_submit():
+        current_user.streak = form.streak.data
+        current_user.total = form.total.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('beta'))
+    elif request.method == 'GET':
+        form.streak.data = current_user.streak
+        form.total.data = current_user.total
+    return render_template('betaone.html', form=form)
+
+#Route: Beta 1.0 workout #
+@users.route("/betaworkout")
+@login_required
+def workout():
+    return render_template('workout.html')
+

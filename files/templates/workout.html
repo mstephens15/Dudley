@@ -1,0 +1,52 @@
+{% extends "layout_beta.html" %}
+{% block extra %}
+
+<div class="content-section">
+    <fieldset class="form-group text-center">
+        <legend class="font45 uwhite">Today's Mission</legend>
+
+        <div class="content-section">
+
+<!-- Row 1 -->
+            <div class="row">
+				<div class="col-md-6 text-center font45">
+            		<span class="float-md-left"><h2 class="wktnumber">Task 1.</h2> 50 Push Ups</span>
+        		</div>
+        		<div class="col-md-6 text-right wktbutton">
+            			<input type="checkbox" id="testbox1"> 
+            			<label for="testbox1"></label>
+       			</div>
+			</div>                         
+
+<!-- Row 2 -->
+			<div class="row">
+				<div class="col-md-6 text-center font45">
+            		<span class="float-md-left"><h2 class="wktnumber">Task 2.</h2> 50 Sit Ups</span>
+        		</div>
+        		<div class="col-md-6 text-right wktbutton">
+            			<input type="checkbox" id="testbox2" disabled> 
+            			<label for="testbox2"></label>
+       			</div>
+			</div>
+
+<!-- Row 3 -->	
+			<div class="row">
+				<div class="col-md-6 text-center font45">
+            		<span class="float-md-left"><h2 class="wktnumber">Task 3.</h2> 50 Jumping Squats</span>
+        		</div>
+        		<div class="col-md-6 text-right wktbutton">
+            			<input type="checkbox" id="testbox3" disabled> 
+            			<label for="testbox3"></label>
+       			</div>
+       		</div>
+        </div>
+        <div>
+        	<a class="nav-link" href="{{ url_for('users.beta') }}">
+                <p class="font45 text-right" id="finisher">Mission Complete</p>
+            </a>
+        </div>
+    </fieldset>   
+</div>
+
+{% endblock extra %}
+
