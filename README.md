@@ -46,9 +46,12 @@ Website
 >Added new CSS page, general.css 
 >Cleaned up CSS; made classes like real classes i.e. can be used many times, id for specific
 
-### Version 1.18 (Open 4/14/20)
+### Version 1.18 (Closed 4/14/20)
 >Streak and total not updating
->
+
+
+### Version 1.19 (Open 6/3/20)
+>Was able to get streak and total working; have been moving on to making the game now
 
 <!--- {% if user != current_user %}
         {% if not current_user.is_following(user) %}
