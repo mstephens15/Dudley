@@ -18,6 +18,7 @@
 
     <!-- Row 2: Inputs -->
 <form method="POST" action="">
+  {{ form.hidden_tag() }}
     <div class="row">
       <p class="col-6 font100" id="streakcounter">{{ form.streak }}</p>
       <p class="col-6 font100" id="totalcounter">{{ form.total }}</p>
@@ -38,12 +39,10 @@
    </div>
 
    <!-- Row 4: Update Button -->
-
-        <form method="POST" action=""> 
             <div class="form-group">
                 {{ form.submit(class="my-button btn btn-outline-info") }}
             </div>
-        </form>
+</form>
 
         <div class="textaligncenter">
              <div class="font45">

@@ -18,8 +18,10 @@ mail = Mail()
 migrate = Migrate()
 
 #Working with the admin page!
-from files.models import User, Role, Controller, MyAdmin
+from files.models import User, Post, Role, Controller, MyAdmin
 from files.users.forms import LoginForm
+
+migrate = Migrate()
 
 admin = Admin(index_view=MyAdmin())
 admin.add_view(Controller(User, db.session))
@@ -27,7 +29,6 @@ admin.add_view(Controller(User, db.session))
 #change the alert if it asks people to sign in first
 login_manager.login_message_category = 'info'
 
-migrate = Migrate()
 
 def create_app(config_class=Config):
     app = Flask(__name__)

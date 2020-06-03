@@ -77,7 +77,7 @@ def account():
         flash('Your account has been updated!', 'success')
         return redirect(url_for('users.account'))
 
-#Shows current username and email in the fields when you go to account preferences        
+#Shows current username and email in the fields when you go to account         
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
@@ -174,7 +174,7 @@ def beta():
         current_user.total = form.total.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
-        return redirect(url_for('beta'))
+        return redirect(url_for('users.beta'))
     elif request.method == 'GET':
         form.streak.data = current_user.streak
         form.total.data = current_user.total

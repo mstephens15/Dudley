@@ -40,12 +40,15 @@ Website
     routes.py
     user_posts.html
 
-### Version 1.17 (Open 2/3/20)
+### Version 1.17 (Closed 4/14/20)
 >Recreating "home" to be more simple like my Beta 1.0 workflow drawings
 >Editing mainly workout.html and betaone.html
 >Added new CSS page, general.css 
 >Cleaned up CSS; made classes like real classes i.e. can be used many times, id for specific
 
+### Version 1.18 (Open 4/14/20)
+>Streak and total not updating
+>
 
 <!--- {% if user != current_user %}
         {% if not current_user.is_following(user) %}
